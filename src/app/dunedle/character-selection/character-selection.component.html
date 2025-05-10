@@ -1,0 +1,40 @@
+<!--
+  This file is part of Dunedle.
+
+  Copyright (C) 2025 moeridoe
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program. If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<mat-form-field id="character-input">
+  <input matInput
+         [(ngModel)]="inputGuess"
+         [matAutocomplete]="auto"
+         (input)="onInput($event)"
+         [disabled]="!editable()"
+         placeholder="Type to search">
+</mat-form-field>
+
+<mat-autocomplete
+  #auto="matAutocomplete"
+  [displayWith]="displayFn"
+  (optionSelected)="onOptionSelected($event)">
+
+  @for (option of filteredOptions; track $index) {
+    <mat-option [value]="option">
+      {{ option.name }}
+    </mat-option>
+  }
+</mat-autocomplete>
+<button mat-button id="submit-button" (click)="onSubmit()">Guess</button>

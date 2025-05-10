@@ -1,0 +1,48 @@
+<!--
+  This file is part of Dunedle.
+
+  Copyright (C) 2025 moeridoe
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program. If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<app-character-selection id="character-selection" [editable]="editable()" [guessedCharacters]="guessedCharacters()" (newGuessResponse)="onGuess($event)"/>
+<p class="yesterday">Yesterday's character was <span class="yesterday-character">{{ yesterdaysCharacter().name }}</span></p>
+@if(guesses().length > 0) {
+  <table id="guesses-table">
+  <tr class="neutral header-row">
+    <td>{{ 'Character' }}</td>
+    <td>{{ 'Gender' }}</td>
+    <td>{{ 'Height (in cm)' }}</td>
+    <td>{{ 'Faction / Affiliation' }}</td>
+    <td>{{ 'Hair Color' }}</td>
+    <td>{{ 'Books' }}</td>
+  </tr>
+  @for(e of guesses(); track $index) {
+    <tr class="guess-row">
+      <td class="neutral">{{ e.guessedCharacter.name }}</td>
+      <td [ngClass]="getClassFor(e.guessEvaluation, Category.GENDER)">{{ enumListDisplayFunction(e.guessedCharacter.genders) }}</td>
+      <td [ngClass]="getClassFor(e.guessEvaluation, Category.HEIGHT)">
+        {{ e.guessedCharacter.height }}
+        @if(e.guessEvaluation.get(Category.HEIGHT) !== 1) {
+          <mat-icon>{{ e.guessEvaluation.get(Category.HEIGHT) === -1 ? 'arrow_drop_down' : 'arrow_drop_up' }}</mat-icon>
+        }
+      </td>
+      <td [ngClass]="getClassFor(e.guessEvaluation, Category.FACTION)">{{ enumListDisplayFunction(e.guessedCharacter.factions) }}</td>
+      <td [ngClass]="getClassFor(e.guessEvaluation, Category.HAIRCOLOR)">{{ enumListDisplayFunction(e.guessedCharacter.hairColors) }}</td>
+      <td [ngClass]="getClassFor(e.guessEvaluation, Category.BOOKS)">{{ enumListDisplayFunction(e.guessedCharacter.books) }}</td>
+    </tr>
+  }
+  </table>
+}
