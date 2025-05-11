@@ -34,7 +34,7 @@ To build the project run:
 npm run build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+This will compile your project and store the build artifacts in the `docs/` directory. By default, the production build optimizes your application for performance and speed.
 
 ## Additional Resources
 
@@ -53,4 +53,4 @@ You can then visit http://localhost to play
 
 ## Web Deployment
 
-To deploy the app as a simple static single page application, build the project as described above in [Building](#Building) and move the contents of the "/dist/dunedle" folder to your web server's folder. Please be aware of the [License](#License) conditions before publicly hosting the website yourself. 
+To deploy the app as a simple static single page application, build the project as described above in [Building](#Building) and move the contents of the "/docs" folder to your web server's folder. Please be aware of the [License](#License) conditions before publicly hosting the website yourself. 

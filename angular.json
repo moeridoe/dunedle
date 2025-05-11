@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "dunedle-client": {
+    "dunedle": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/dunedle",
+            "outputPath": "docs",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "dunedle-client:build:production"
+              "buildTarget": "dunedle:build:production"
             },
             "development": {
-              "buildTarget": "dunedle-client:build:development"
+              "buildTarget": "dunedle:build:development"
             }
           },
           "defaultConfiguration": "development"
