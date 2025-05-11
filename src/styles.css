@@ -27,7 +27,7 @@ html, body {
 
 @font-face {
   font-family: "DuneRise";
-  src: url("/dunedle/fonts/Dune_Rise.otf") format("opentype");
+  src: url("/fonts/Dune_Rise.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
