@@ -53,4 +53,4 @@ You can then visit http://localhost to play
 
 ## Web Deployment
 
-To deploy the app as a simple static single page application, build the project as described above in [Building](#Building) and move the contents of the "/dist/dunedle/browser" folder to your web server's folder. Please be aware of the [License](#License) conditions before publicly hosting the website yourself. 
+To deploy the app as a simple static single page application, build the project as described above in [Building](#Building) and move the contents of the "/dist/dunedle" folder to your web server's folder. Please be aware of the [License](#License) conditions before publicly hosting the website yourself. 
