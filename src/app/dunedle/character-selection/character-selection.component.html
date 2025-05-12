@@ -23,7 +23,8 @@
          [matAutocomplete]="auto"
          (input)="onInput($event)"
          [disabled]="!editable()"
-         placeholder="Type to search">
+         placeholder="Type to search"
+         (keydown.enter)="onSubmit()">
 </mat-form-field>
 
 <mat-autocomplete

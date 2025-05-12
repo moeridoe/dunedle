@@ -33,5 +33,5 @@ import { FooterComponent } from './footer/footer.component';
 })
 export class AppComponent {
   title = 'dunedle';
-  version = 'v1.0.0';
+  version = 'v1.0.1';
 }

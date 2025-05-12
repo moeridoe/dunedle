@@ -29,7 +29,8 @@ import {MatInput} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DuneCharacter, GuessResponse} from '../../domain/dunedle.model';
 import {MatButton} from '@angular/material/button';
-import { DuneCharacterStore } from '../../domain/dune-character.store';
+import {DuneCharacterStore} from '../../domain/dune-character.store';
+import {isDuneCharacter} from '../../common/utils';
 
 @Component({
   selector: 'app-character-selection',
@@ -72,7 +73,7 @@ export class CharacterSelectionComponent {
   }
 
   onSubmit() {
-    if(this.inputGuess == null) {
+    if(this.inputGuess == null || !isDuneCharacter(this.inputGuess)) {
       return;
     }
     this.newGuessResponse.emit(this.duneCharacterStore.compareGuess(this.inputGuess));
