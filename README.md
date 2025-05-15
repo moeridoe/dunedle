@@ -6,7 +6,7 @@ So far characters from the first 4 books are included and information in the cat
 
 # License
 
-This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](./LICENSE) file for details.
+This project is licensed under the CC BY-NC-SA license - see the [LICENSE](./LICENSE) file for details and take note of the [Disclaimer](#Disclaimer).
 
 # Contribution
 
@@ -54,3 +54,6 @@ You can then visit http://localhost to play
 ## Web Deployment
 
 To deploy the app as a simple static single page application, build the project as described above in [Building](#Building) and move the contents of the "/docs" folder to your web server's folder. Please be aware of the [License](#License) conditions before publicly hosting the website yourself. 
+
+## Disclaimer
+This web application is a non-commercial fan project inspired by the Dune universe created by Frank Herbert. It is not affiliated with, endorsed, sponsored, or approved by Herbert Properties LLC, Legendary Pictures, or any other rights holders of the Dune franchise. All trademarks, character names, and related content are the property of their respective owners and are used here in a strictly non-commercial, transformative context.
