@@ -17,32 +17,35 @@
   along with this program. If not, see <https://www.gnu.org/licenses/>.
 -->
 
-<app-character-selection id="character-selection" [editable]="editable()" [guessedCharacters]="guessedCharacters()" (newGuessResponse)="onGuess($event)"/>
+<span class="search-container">
+  <mat-icon class='help-button' (click)="onHelpClick()">help</mat-icon>
+  <app-character-selection id="character-selection" [editable]="editable()" [guessedCharacters]="guessedCharacters()" (newGuessResponse)="onGuess($event)"/>
+</span>
 <p class="yesterday">Yesterday's character was <span class="yesterday-character">{{ yesterdaysCharacter().name }}</span></p>
 @if(guesses().length > 0) {
   <table id="guesses-table">
-  <tr class="neutral header-row">
-    <td>{{ 'Character' }}</td>
-    <td>{{ 'Gender' }}</td>
-    <td>{{ 'Height (in cm)' }}</td>
-    <td>{{ 'Faction / Affiliation' }}</td>
-    <td>{{ 'Hair Color' }}</td>
-    <td>{{ 'Books' }}</td>
-  </tr>
-  @for(e of guesses(); track $index) {
-    <tr class="guess-row">
-      <td class="neutral">{{ e.guessedCharacter.name }}</td>
-      <td [ngClass]="getClassFor(e.guessEvaluation, Category.GENDER)">{{ enumListDisplayFunction(e.guessedCharacter.genders) }}</td>
-      <td [ngClass]="getClassFor(e.guessEvaluation, Category.HEIGHT)">
-        {{ e.guessedCharacter.height }}
-        @if(e.guessEvaluation.get(Category.HEIGHT) !== 1) {
-          <mat-icon>{{ e.guessEvaluation.get(Category.HEIGHT) === -1 ? 'arrow_drop_down' : 'arrow_drop_up' }}</mat-icon>
-        }
-      </td>
-      <td [ngClass]="getClassFor(e.guessEvaluation, Category.FACTION)">{{ enumListDisplayFunction(e.guessedCharacter.factions) }}</td>
-      <td [ngClass]="getClassFor(e.guessEvaluation, Category.HAIRCOLOR)">{{ enumListDisplayFunction(e.guessedCharacter.hairColors) }}</td>
-      <td [ngClass]="getClassFor(e.guessEvaluation, Category.BOOKS)">{{ enumListDisplayFunction(e.guessedCharacter.books) }}</td>
+    <tr class="neutral header-row">
+      <td>{{ 'Character' }}</td>
+      <td>{{ 'Gender' }}</td>
+      <td>{{ 'Height (in cm)' }}</td>
+      <td>{{ 'Faction / Affiliation' }}</td>
+      <td>{{ 'Hair Color' }}</td>
+      <td>{{ 'Books' }}</td>
     </tr>
-  }
+    @for(e of guesses(); track e.guessedCharacter.name) {
+      <tr class="guess-row" [ngClass]="guesses().indexOf(e) == 0 ? 'first-row' : ''">
+        <td class="neutral">{{ e.guessedCharacter.name }}</td>
+        <td [ngClass]="getClassFor(e.guessEvaluation, Category.GENDER)">{{ enumListDisplayFunction(e.guessedCharacter.genders) }}</td>
+        <td [ngClass]="getClassFor(e.guessEvaluation, Category.HEIGHT)">
+          {{ e.guessedCharacter.height }}
+          @if(e.guessEvaluation.get(Category.HEIGHT) !== 1) {
+            <mat-icon>{{ e.guessEvaluation.get(Category.HEIGHT) === -1 ? 'arrow_drop_down' : 'arrow_drop_up' }}</mat-icon>
+          }
+        </td>
+        <td [ngClass]="getClassFor(e.guessEvaluation, Category.FACTION)">{{ enumListDisplayFunction(e.guessedCharacter.factions) }}</td>
+        <td [ngClass]="getClassFor(e.guessEvaluation, Category.HAIRCOLOR)">{{ enumListDisplayFunction(e.guessedCharacter.hairColors) }}</td>
+        <td [ngClass]="getClassFor(e.guessEvaluation, Category.BOOKS)">{{ enumListDisplayFunction(e.guessedCharacter.books) }}</td>
+      </tr>
+    }
   </table>
 }

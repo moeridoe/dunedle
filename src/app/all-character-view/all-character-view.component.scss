@@ -21,13 +21,13 @@
   width: 90%;
   align-self: center;
   text-align: center;
-}
 
-:host table {
-  width: 100%;
-}
+  table {
+    width: 100%;
 
-:host tr {
-  height: 50px;
-  background-color: #344a5e;
+    tr {
+      height: 50px;
+      background-color: #344a5e;
+    }
+  }
 }
