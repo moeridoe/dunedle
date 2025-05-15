@@ -46,7 +46,7 @@ import {isDuneCharacter} from '../../common/utils';
     MatButton
   ],
   templateUrl: './character-selection.component.html',
-  styleUrl: './character-selection.component.css'
+  styleUrl: './character-selection.component.scss'
 })
 export class CharacterSelectionComponent {
   editable = input<boolean>(true);
@@ -64,7 +64,8 @@ export class CharacterSelectionComponent {
   onInput(event: Event) {
     const value = (event.target as HTMLInputElement).value.toLowerCase();
     this.filteredOptions = this.allOptions().filter(opt =>
-      !this.guessedCharacters().includes(opt) && opt.name.toLowerCase().includes(value)
+      !this.guessedCharacters().includes(opt)
+      && opt.name.split(' ').some(word => word.replace(/[(,)]/g, '').toLowerCase().startsWith(value))
     );
   }
 

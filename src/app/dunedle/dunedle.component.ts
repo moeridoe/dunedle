@@ -26,6 +26,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {WinDialogComponent} from './win-dialog/win-dialog.component';
 import {enumListDisplayFunction} from '../common/utils';
 import {DuneCharacterStore} from '../domain/dune-character.store';
+import {HelpDialogComponent} from '../help-dialog/help-dialog.component';
 
 @Component({
   selector: 'app-dunedle',
@@ -35,7 +36,7 @@ import {DuneCharacterStore} from '../domain/dune-character.store';
     NgClass
   ],
   templateUrl: './dunedle.component.html',
-  styleUrl: './dunedle.component.css'
+  styleUrl: './dunedle.component.scss',
 })
 export class DunedleComponent {
   guesses = signal<GuessResponse[]>([]);
@@ -50,7 +51,7 @@ export class DunedleComponent {
   }
 
   onGuess(guessResponse: GuessResponse) {
-    this.guesses.set([...this.guesses(), guessResponse]);
+    this.guesses.set([guessResponse, ...this.guesses()]);
     if (this.checkWin(guessResponse)) {
       this.onWin();
     }
@@ -63,6 +64,10 @@ export class DunedleComponent {
   onWin() {
     this.editable.set(false);
     this.matDialog.open(WinDialogComponent);
+  }
+
+  onHelpClick() {
+    this.matDialog.open(HelpDialogComponent);
   }
 
   getClassFor(evalMap: Map<Category, number>, category: Category) {

@@ -17,54 +17,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-:host {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+import { Component } from '@angular/core';
 
-#guesses-table {
-  width: 90%;
-  margin: 20px;
-  text-align: center;
-}
+@Component({
+  selector: 'app-help-dialog',
+  templateUrl: './help-dialog.component.html',
+  styleUrl: './help-dialog.component.scss'
+})
+export class HelpDialogComponent {
 
-#guesses-table .header-row {
-  height: 50px;
-}
-
-#guesses-table .guess-row {
-  height: 100px;
-}
-
-#guesses-table * td {
-  width: 100px;
-}
-
-.yesterday {
-  padding: 0;
-  margin: 0;
-}
-
-.yesterday-character {
-  color: #344a5e;
-}
-
-.neutral {
-  background-color: #344a5e;
-}
-
-.wrong {
-  background-color: #c86235;
-}
-
-.correct {
-  background-color: #79903a;
-}
-
-.partially-correct {
-  background-color: #f3b451;
-  color: #344a5e;
 }

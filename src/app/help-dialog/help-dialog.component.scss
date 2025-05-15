@@ -17,16 +17,35 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#character-input {
-  margin: 20px;
-  width: 300px;
+h2 {
+  margin: 0;
 }
 
-#submit-button {
-  width: 120px;
-  height: 50px;
-  margin: 20px;
-  border: none;
-  background-color: #344a5e;
-  color: #faf0dc;
+.dialog-container {
+  padding: 24px 32px;
+  line-height: 1.5;
+}
+
+
+table, tr {
+  width: 100%;
+  text-align: center;
+}
+
+td {
+  height: 35px;
+  padding: 0 12px;
+}
+
+.wrong {
+  background-color: #c86235;
+}
+
+.correct {
+  background-color: #79903a;
+}
+
+.partially-correct {
+  background-color: #f3b451;
+  color: #344a5e;
 }

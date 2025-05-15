@@ -26,7 +26,7 @@ import { DuneCharacterStore } from '../domain/dune-character.store';
   standalone: true,
   selector: 'app-all-character-view',
   templateUrl: './all-character-view.component.html',
-  styleUrl: './all-character-view.component.css'
+  styleUrl: './all-character-view.component.scss'
 })
 export class AllCharacterViewComponent {
   entities = signal<DuneCharacter[]>([]);
