@@ -4,25 +4,24 @@
   https://creativecommons.org/licenses/by-nc-sa/4.0/
 -->
 
-<mat-form-field id="character-input">
-  <input matInput
-         [(ngModel)]="inputGuess"
-         [matAutocomplete]="auto"
-         (input)="onInput($event)"
-         [disabled]="!editable()"
-         placeholder="Type to search"
-         (keydown.enter)="onSubmit()">
-</mat-form-field>
+<input id="character-input"
+  autofocus
+  [(ngModel)]="inputGuess"
+  [matAutocomplete]="auto"
+  (input)="onInput($event)"
+  [disabled]="!editable()"
+  placeholder="Type to search"
+  (keydown.enter)="onSubmit()">
 
 <mat-autocomplete
   #auto="matAutocomplete"
   [displayWith]="displayFn"
   (optionSelected)="onOptionSelected($event)">
 
-  @for (option of filteredOptions; track $index) {
+  @for (option of filteredOptions(); track $index) {
     <mat-option [value]="option">
       {{ option.name }}
     </mat-option>
   }
 </mat-autocomplete>
-<button mat-button id="submit-button" (click)="onSubmit()">Guess</button>
+<button id="submit-button" (click)="onSubmit()">Guess</button>

@@ -7,6 +7,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: true,
   selector: 'app-help-dialog',
   templateUrl: './help-dialog.component.html',
   styleUrl: './help-dialog.component.scss'

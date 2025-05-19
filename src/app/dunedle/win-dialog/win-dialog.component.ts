@@ -9,6 +9,7 @@ import {MatDialogActions, MatDialogClose, MatDialogTitle} from '@angular/materia
 import {MatButton} from '@angular/material/button';
 
 @Component({
+  standalone: true,
   selector: 'app-win-dialog',
   imports: [
     MatDialogTitle,
