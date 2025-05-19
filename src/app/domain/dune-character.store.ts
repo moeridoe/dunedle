@@ -12,7 +12,7 @@ import {Injectable} from '@angular/core';
   providedIn: 'root'
 })
 export class DuneCharacterStore {
-  characters: DuneCharacter[] = [
+  readonly characters: DuneCharacter[] = [
     {name: 'Paul Atreides (Usul, Muad\'Dib, The Preacher)', genders: ['MALE'], height: 180, hairColors: ['DARK_BROWN'], factions: ['ATREIDES', 'BENE_GESSERIT', 'FREMEN', 'MENTAT'], books: ['DUNE', 'DUNE_MESSIAH', 'CHILDREN_OF_DUNE']},
     {name: 'Leto I Atreides', genders: ['MALE'], height: 188, hairColors: ['DARK_BROWN'], factions: ['ATREIDES'], books: ['DUNE']},
     {name: 'Lady Jessica', genders: ['FEMALE'], height: 175, hairColors: ['AUBURN'], factions: ['ATREIDES', 'BENE_GESSERIT'], books: ['DUNE', 'CHILDREN_OF_DUNE']},
@@ -64,16 +64,20 @@ export class DuneCharacterStore {
     {name: 'Malky', genders: ['MALE'], height: 175, hairColors: ['BLACK'], factions: ['IX'], books: ['DUNE_GOD_EMPEROR']},
     {name: 'Marcus Claire Luyseyal', genders: ['FEMALE'], height: 170, hairColors: ['UNSPECIFIED'], factions: ['BENE_GESSERIT'], books: ['DUNE_GOD_EMPEROR']},
   ]
-  seedOfToday: number = new Date().setHours(0,0,0,0);
-  seedOfYesterday: number = new Date().setHours(0,0,0,0) - 24*60*60*1000; // minus a day in ms
-  getCharacterWithSeed = (seed: number): DuneCharacter => {
+  readonly seedOfToday: number = new Date().setHours(0,0,0,0);
+  readonly seedOfYesterday: number = new Date().setHours(0,0,0,0) - 24*60*60*1000; // minus a day in ms
+  private getCharacterWithSeed(seed: number): DuneCharacter {
     const rand = randomSeed.create(seed + '');
     return this.characters[rand(this.characters.length)];
   }
-  todaysCharacter: DuneCharacter = this.getCharacterWithSeed(this.seedOfToday);
-  yesterdaysCharacter: DuneCharacter = this.getCharacterWithSeed(this.seedOfYesterday);
+  get todaysCharacter(): DuneCharacter {
+    return this.getCharacterWithSeed(this.seedOfToday);
+  }
+  get yesterdaysCharacter(): DuneCharacter {
+    return this.getCharacterWithSeed(this.seedOfYesterday);
+  }
 
-  compareGuess = (guess: DuneCharacter): GuessResponse => {
+  public compareGuess(guess: DuneCharacter): GuessResponse {
     let evalList: Map<Category, number> = new Map();
     evalList.set(Category.GENDER, this.compareLists(this.todaysCharacter.genders, guess.genders));
     evalList.set(Category.HEIGHT, this.compareInteger(this.todaysCharacter.height, guess.height));
@@ -83,14 +87,14 @@ export class DuneCharacterStore {
     return {guessedCharacter: guess, guessEvaluation: evalList};
   }
 
-  compareInteger(target: number, guess: number): number {
+  private compareInteger(target: number, guess: number): number {
     if (target == guess) return 1;
     else if(target < guess) return -1;
     else if(target > guess) return -2;
     else return 0;
   }
 
-  compareLists(targetList: any[], guessedList: any[]): number {
+  private compareLists(targetList: any[], guessedList: any[]): number {
     if(JSON.stringify(targetList) == JSON.stringify(guessedList) || (targetList.length == 0 && guessedList.length == 0)) {
       return 1;
     }

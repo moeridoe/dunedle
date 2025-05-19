@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
+  standalone: true,
   selector: 'app-disclaimer',
-  imports: [],
   templateUrl: './disclaimer.component.html',
   styleUrl: './disclaimer.component.scss'
 })

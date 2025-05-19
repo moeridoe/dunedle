@@ -4,14 +4,15 @@
  * https://creativecommons.org/licenses/by-nc-sa/4.0/
  */
 
-import { Component, input } from "@angular/core";
+import {Component, input} from "@angular/core";
 import {MatDialog} from '@angular/material/dialog';
 import {DisclaimerComponent} from './disclaimer/disclaimer.component';
 
 @Component({
-    selector: 'app-footer',
-    templateUrl: './footer.component.html',
-    styleUrl: './footer.component.scss'
+  standalone: true,
+  selector: 'app-footer',
+  templateUrl: './footer.component.html',
+  styleUrl: './footer.component.scss'
 })
 export class FooterComponent {
     version = input.required<string>();

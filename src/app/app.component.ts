@@ -5,20 +5,20 @@
  */
 
 import {Component} from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { FooterComponent } from './footer/footer.component';
+import {FooterComponent} from './footer/footer.component';
+import {DunedleComponent} from './dunedle/dunedle.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     FooterComponent,
-    RouterOutlet
+    DunedleComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'dunedle';
-  version = 'v1.0.3';
+  version = 'v1.0.4';
 }
