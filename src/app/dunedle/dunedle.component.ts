@@ -9,7 +9,6 @@ import {CharacterSelectionComponent} from './character-selection/character-selec
 import {Category, DuneCharacter, GuessResponse} from '../domain/dunedle.model';
 import {NgClass} from '@angular/common';
 import {MatDialog} from '@angular/material/dialog';
-import {MatIcon} from '@angular/material/icon';
 import {WinDialogComponent} from './win-dialog/win-dialog.component';
 import {enumListDisplayFunction} from '../common/utils';
 import {DuneCharacterStore} from '../domain/dune-character.store';
@@ -20,7 +19,6 @@ import {HelpDialogComponent} from '../help-dialog/help-dialog.component';
   selector: 'app-dunedle',
   imports: [
     CharacterSelectionComponent,
-    MatIcon,
     NgClass
   ],
   templateUrl: './dunedle.component.html',
