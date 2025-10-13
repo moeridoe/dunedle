@@ -49,7 +49,7 @@ export class DunedleComponent {
 
   onWin() {
     this.editable.set(false);
-    this.matDialog.open(WinDialogComponent);
+    setTimeout(() => this.matDialog.open(WinDialogComponent), 2500);
   }
 
   onHelpClick() {

@@ -20,5 +20,5 @@ import {DunedleComponent} from './dunedle/dunedle.component';
 })
 export class AppComponent {
   title = 'dunedle';
-  version = 'v1.0.6';
+  version = 'v1.0.7';
 }
