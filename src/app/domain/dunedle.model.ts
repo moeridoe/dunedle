@@ -17,4 +17,5 @@ export interface DuneCharacter {
   factions: Faction[];
   books: Book[];
 }
-export type GuessResponse = {guessedCharacter: DuneCharacter, guessEvaluation: Map<Category, number>};
+export enum EvaluationResult { WRONG = 0, CORRECT = 1, PARTIALLY_CORRECT = 2, TOO_HIGH = -1, TOO_LOW = -2 }
+export type GuessResponse = {guessedCharacter: DuneCharacter, guessEvaluation: Map<Category, EvaluationResult>};

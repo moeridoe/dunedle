@@ -13,9 +13,6 @@ This project is licensed under the CC BY-NC-SA license - see the [LICENSE](./LIC
 This is a small side-project. Feel free to request features or to suggest improvements in the discussions or issue sections of this repo or to directly create pull-requests. 
 
 # Build/Deployment
-
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.9.
-
 ## Development server
 
 To start a local development server, run:

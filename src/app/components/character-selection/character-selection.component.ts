@@ -11,9 +11,10 @@ import {
   MatOption
 } from "@angular/material/autocomplete";
 import {DuneCharacter, GuessResponse} from '../../domain/dunedle.model';
-import {DuneCharacterStore} from '../../domain/dune-character.store';
 import {isDuneCharacter} from '../../common/utils';
 import {FormsModule} from '@angular/forms';
+import {DuneCharacterService} from '../../services/dune-character.service';
+import {GuessService} from '../../services/guess.service';
 
 @Component({
   standalone: true,
@@ -36,8 +37,9 @@ export class CharacterSelectionComponent {
   allOptions = signal<DuneCharacter[]>([]);
   filteredOptions = signal<DuneCharacter[]>([...this.allOptions()]);
 
-  constructor(private readonly duneCharacterStore: DuneCharacterStore) {
-      this.allOptions.set(duneCharacterStore.characters);
+  constructor(private readonly guessService: GuessService,
+              readonly duneCharacterService: DuneCharacterService) {
+      this.allOptions.set(duneCharacterService.characters);
   }
 
   onInput(event: Event) {
@@ -56,7 +58,7 @@ export class CharacterSelectionComponent {
     if(this.inputGuess == null || !isDuneCharacter(this.inputGuess)) {
       return;
     }
-    this.newGuessResponse.emit(this.duneCharacterStore.compareGuess(this.inputGuess));
+    this.newGuessResponse.emit(this.guessService.compareGuess(this.inputGuess));
     this.inputGuess = null;
     this.filteredOptions.set([]);
   }

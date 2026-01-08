@@ -4,15 +4,14 @@
  * https://creativecommons.org/licenses/by-nc-sa/4.0/
  */
 
-import randomSeed from 'random-seed';
-import {Category, DuneCharacter, GuessResponse} from './dunedle.model';
+import {DuneCharacter} from './dunedle.model';
 import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DuneCharacterStore {
-  readonly characters: DuneCharacter[] = [
+  public readonly characters: DuneCharacter[] = [
     {name: 'Paul Atreides (Usul, Muad\'Dib, The Preacher)', genders: ['MALE'], height: 180, hairColors: ['DARK_BROWN'], factions: ['ATREIDES', 'BENE_GESSERIT', 'FREMEN', 'MENTAT'], books: ['DUNE', 'DUNE_MESSIAH', 'CHILDREN_OF_DUNE']},
     {name: 'Leto I Atreides', genders: ['MALE'], height: 188, hairColors: ['DARK_BROWN'], factions: ['ATREIDES'], books: ['DUNE']},
     {name: 'Lady Jessica', genders: ['FEMALE'], height: 175, hairColors: ['AUBURN'], factions: ['ATREIDES', 'BENE_GESSERIT'], books: ['DUNE', 'CHILDREN_OF_DUNE']},
@@ -64,47 +63,4 @@ export class DuneCharacterStore {
     {name: 'Malky', genders: ['MALE'], height: 175, hairColors: ['BLACK'], factions: ['IX'], books: ['DUNE_GOD_EMPEROR']},
     {name: 'Marcus Claire Luyseyal', genders: ['FEMALE'], height: 170, hairColors: ['UNSPECIFIED'], factions: ['BENE_GESSERIT'], books: ['DUNE_GOD_EMPEROR']},
   ]
-  readonly seedOfToday: number = new Date().setHours(0,0,0,0);
-  readonly seedOfYesterday: number = new Date().setHours(0,0,0,0) - 24*60*60*1000; // minus a day in ms
-  private getCharacterWithSeed(seed: number): DuneCharacter {
-    const rand = randomSeed.create(seed + '');
-    return this.characters[rand(this.characters.length)];
-  }
-  get todaysCharacter(): DuneCharacter {
-    return this.getCharacterWithSeed(this.seedOfToday);
-  }
-  get yesterdaysCharacter(): DuneCharacter {
-    return this.getCharacterWithSeed(this.seedOfYesterday);
-  }
-
-  public compareGuess(guess: DuneCharacter): GuessResponse {
-    let evalList: Map<Category, number> = new Map();
-    evalList.set(Category.GENDER, this.compareLists(this.todaysCharacter.genders, guess.genders));
-    evalList.set(Category.HEIGHT, this.compareInteger(this.todaysCharacter.height, guess.height));
-    evalList.set(Category.HAIRCOLOR, this.compareLists(this.todaysCharacter.hairColors, guess.hairColors));
-    evalList.set(Category.FACTION, this.compareLists(this.todaysCharacter.factions, guess.factions));
-    evalList.set(Category.BOOKS, this.compareLists(this.todaysCharacter.books, guess.books));
-    return {guessedCharacter: guess, guessEvaluation: evalList};
-  }
-
-  private compareInteger(target: number, guess: number): number {
-    if (target == guess) return 1;
-    else if(target < guess) return -1;
-    else if(target > guess) return -2;
-    else return 0;
-  }
-
-  private compareLists(targetList: any[], guessedList: any[]): number {
-    if(JSON.stringify(targetList) == JSON.stringify(guessedList) || (targetList.length == 0 && guessedList.length == 0)) {
-      return 1;
-    }
-
-    for(let elem of guessedList) {
-      if(targetList.includes(elem)) {
-        return 2;
-      }
-    }
-
-    return 0;
-  }
 }

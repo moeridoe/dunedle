@@ -6,7 +6,7 @@
 
 import {Component, input} from "@angular/core";
 import {MatDialog} from '@angular/material/dialog';
-import {DisclaimerComponent} from './disclaimer/disclaimer.component';
+import {DisclaimerComponent} from '../disclaimer/disclaimer.component';
 
 @Component({
   standalone: true,

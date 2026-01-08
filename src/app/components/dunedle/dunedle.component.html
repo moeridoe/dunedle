@@ -26,9 +26,9 @@
         <td [ngClass]="getClassFor(e.guessEvaluation, Category.HEIGHT)">
           <div class="height-cell-container">
           {{ e.guessedCharacter.height }}
-            @if(e.guessEvaluation.get(Category.HEIGHT) !== 1) {
+            @if(e.guessEvaluation.get(Category.HEIGHT) !== EvaluationResult.CORRECT) {
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" height="24px" width="24px" fill="#EFEFEF">
-              @if(e.guessEvaluation.get(Category.HEIGHT) === -1) {
+              @if(e.guessEvaluation.get(Category.HEIGHT) === EvaluationResult.TOO_HIGH) {
                 <path d="M480-360 280-560h400L480-360Z"/>
               } @else {
                 <path d="m280-400 200-200 200 200H280Z"/>

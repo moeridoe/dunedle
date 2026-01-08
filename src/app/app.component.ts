@@ -5,8 +5,8 @@
  */
 
 import {Component} from '@angular/core';
-import {FooterComponent} from './footer/footer.component';
-import {DunedleComponent} from './dunedle/dunedle.component';
+import {FooterComponent} from './components/footer/footer.component';
+import {DunedleComponent} from './components/dunedle/dunedle.component';
 
 @Component({
   selector: 'app-root',
@@ -20,5 +20,5 @@ import {DunedleComponent} from './dunedle/dunedle.component';
 })
 export class AppComponent {
   title = 'dunedle';
-  version = 'v1.0.7';
+  version = 'v1.0.8';
 }
