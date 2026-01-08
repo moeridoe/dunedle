@@ -4,12 +4,12 @@
  * https://creativecommons.org/licenses/by-nc-sa/4.0/
  */
 
-import {ApplicationConfig, provideExperimentalZonelessChangeDetection} from '@angular/core';
+import {ApplicationConfig, provideZonelessChangeDetection} from '@angular/core';
 import {provideHttpClient} from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideExperimentalZonelessChangeDetection(),
+    provideZonelessChangeDetection(),
     provideHttpClient(),
   ]
 };
