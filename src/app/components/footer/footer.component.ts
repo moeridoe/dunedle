@@ -6,7 +6,8 @@
 
 import {Component, input} from "@angular/core";
 import {MatDialog} from '@angular/material/dialog';
-import {DisclaimerComponent} from '../disclaimer/disclaimer.component';
+
+import {DisclaimerDialogComponent} from '../disclaimer-dialog/disclaimer-dialog.component';
 
 @Component({
   standalone: true,
@@ -20,6 +21,6 @@ export class FooterComponent {
     constructor(private readonly matDialog: MatDialog) {}
 
     openDisclaimerDialog() {
-      this.matDialog.open(DisclaimerComponent);
+      this.matDialog.open(DisclaimerDialogComponent);
     }
 }

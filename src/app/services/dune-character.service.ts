@@ -6,8 +6,9 @@
 
 import {Injectable} from '@angular/core';
 import randomSeed from 'random-seed';
+
 import {DuneCharacter} from '../domain/dunedle.model';
-import {DuneCharacterStore} from '../domain/dune-character.store';
+import {DUNE_ALL_CHARACTER_DATA} from '../domain/dune-character-data';
 
 @Injectable({
   providedIn: 'root'
@@ -16,15 +17,13 @@ export class DuneCharacterService {
   readonly seedOfToday: number = new Date().setHours(0,0,0,0);
   readonly seedOfYesterday: number = new Date().setHours(0,0,0,0) - 24*60*60*1000; // minus a day in ms
 
-  constructor(private readonly characterStore: DuneCharacterStore) {}
-
   private getCharacterWithSeed(seed: number): DuneCharacter {
     const rand = randomSeed.create(seed + '');
-    return this.characters[rand(this.characters.length)];
+    return this.allCharacters[rand(this.allCharacters.length)];
   }
 
-  get characters(): DuneCharacter[] {
-    return this.characterStore.characters;
+  get allCharacters(): DuneCharacter[] {
+    return DUNE_ALL_CHARACTER_DATA;
   }
 
   get todaysCharacter(): DuneCharacter {

@@ -4,15 +4,17 @@
  * https://creativecommons.org/licenses/by-nc-sa/4.0/
  */
 
-import {Component, computed, signal} from '@angular/core';
-import {CharacterSelectionComponent} from '../character-selection/character-selection.component';
-import {Category, DuneCharacter, EvaluationResult, GuessResponse} from '../../domain/dunedle.model';
 import {NgClass} from '@angular/common';
+import {Component, computed, signal} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import {WinDialogComponent} from '../win-dialog/win-dialog.component';
-import {enumListDisplayFunction} from '../../common/utils';
-import {HelpDialogComponent} from '../help-dialog/help-dialog.component';
+
+import {ENUM_LIST_DISPLAY_FN} from '../../common/utils';
+import {Category, DuneCharacter, EvaluationResult, GuessResponse} from '../../domain/dunedle.model';
 import {DuneCharacterService} from '../../services/dune-character.service';
+
+import {CharacterSelectionComponent} from '../character-selection/character-selection.component';
+import {HelpDialogComponent} from '../help-dialog/help-dialog.component';
+import {WinDialogComponent} from '../win-dialog/win-dialog.component';
 
 @Component({
   standalone: true,
@@ -66,7 +68,7 @@ export class DunedleComponent {
   }
 
   // makes these accessible in the template
-  protected readonly enumListDisplayFunction = enumListDisplayFunction;
+  protected readonly enumListDisplayFunction = ENUM_LIST_DISPLAY_FN;
   protected readonly Category = Category;
   protected readonly EvaluationResult = EvaluationResult;
 }

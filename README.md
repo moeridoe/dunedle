@@ -1,8 +1,8 @@
 # Dunedle
 
-Dunedle is a wordle spin-off web app game that let's you guess characters from Frank Herbert's Dune universe daily. 
+Dunedle is a wordle spin-off web app game that lets you guess characters from Frank Herbert's Dune universe daily. 
 
-So far characters from the first 4 books are included and information in the categories "height" and "hair color" for example are only estimations and/or based on vague book descriptions or movie/series adaptations. Further improvement ideas on the categories can be done as described in the [Contribution](#Contribution) section below.
+Characters from the first 4 books are included. Information in the categories "height" and "hair color" are only estimations and/or based on vague book descriptions or movie/series adaptations. Further improvement ideas on the categories can be done as described in the [Contribution](#Contribution) section below.
 
 # License
 
@@ -10,7 +10,7 @@ This project is licensed under the CC BY-NC-SA license - see the [LICENSE](./LIC
 
 # Contribution
 
-This is a small side-project. Feel free to request features or to suggest improvements in the discussions or issue sections of this repo or to directly create pull-requests. 
+This is a small side-project. Feel free to request features or to suggest improvements in the discussions section, to report issues in the issue section or to directly create pull-requests. 
 
 # Build/Deployment
 ## Development server
@@ -25,17 +25,13 @@ Once the server is running, open your browser and navigate to `http://localhost:
 
 ## Building
 
-To build the project run:
+To build the project for deployment, run:
 
 ```bash
 npm run build
 ```
 
 This will compile your project and store the build artifacts in the `docs/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 
 ## Local Deployment Using Docker
 
@@ -46,7 +42,7 @@ To deploy the project using docker, run:
 docker build -t dunedle .
 docker run -p 80:80 dunedle
 ```
-You can then visit http://localhost to play
+You can then visit http://localhost to play.
 
 ## Web Deployment
 

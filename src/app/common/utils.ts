@@ -6,10 +6,10 @@
 
 import {DuneCharacter} from '../domain/dunedle.model';
 
-export const enumListDisplayFunction: (al: string[]) => string = (enumValueList: string[]) =>
-  enumValueList.map(enumDisplayFunction).join(', ');
+export const ENUM_LIST_DISPLAY_FN: (al: string[]) => string = (enumValueList: string[]) =>
+  enumValueList.map(ENUM_DISPLAY_FN).join(', ');
 
-export const enumDisplayFunction: (a: string) => string = (enumValue: string) =>
+export const ENUM_DISPLAY_FN: (a: string) => string = (enumValue: string) =>
   enumValue.toLowerCase().replaceAll('_',' ')
     .split(' ')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))

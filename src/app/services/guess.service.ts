@@ -4,9 +4,10 @@
  * https://creativecommons.org/licenses/by-nc-sa/4.0/
  */
 
+import {Injectable} from '@angular/core';
+
 import {Category, DuneCharacter, EvaluationResult, GuessResponse} from '../domain/dunedle.model';
 import {DuneCharacterService} from './dune-character.service';
-import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'

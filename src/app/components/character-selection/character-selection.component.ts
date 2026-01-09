@@ -5,14 +5,15 @@
  */
 
 import {Component, input, output, signal} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {
   MatAutocomplete,
   MatAutocompleteTrigger,
   MatOption
 } from "@angular/material/autocomplete";
-import {DuneCharacter, GuessResponse} from '../../domain/dunedle.model';
+
 import {isDuneCharacter} from '../../common/utils';
-import {FormsModule} from '@angular/forms';
+import {DuneCharacter, GuessResponse} from '../../domain/dunedle.model';
 import {DuneCharacterService} from '../../services/dune-character.service';
 import {GuessService} from '../../services/guess.service';
 
@@ -39,7 +40,7 @@ export class CharacterSelectionComponent {
 
   constructor(private readonly guessService: GuessService,
               readonly duneCharacterService: DuneCharacterService) {
-      this.allOptions.set(duneCharacterService.characters);
+      this.allOptions.set(duneCharacterService.allCharacters);
   }
 
   onInput(event: Event) {
