@@ -11,6 +11,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {ENUM_LIST_DISPLAY_FN} from '../../common/utils';
 import {Category, DuneCharacter, EvaluationResult, GuessResponse} from '../../domain/dunedle.model';
 import {DuneCharacterService} from '../../services/dune-character.service';
+import {StreakService} from '../../services/streak.service';
 
 import {CharacterSelectionComponent} from '../character-selection/character-selection.component';
 import {HelpDialogComponent} from '../help-dialog/help-dialog.component';
@@ -27,14 +28,20 @@ import {WinDialogComponent} from '../win-dialog/win-dialog.component';
   styleUrl: './dunedle.component.scss',
 })
 export class DunedleComponent {
+  editable = signal<boolean>(true);
   guesses = signal<GuessResponse[]>([]);
   guessedCharacters = computed(() =>
     this.guesses().map(value => value.guessedCharacter)
   );
-  editable = signal<boolean>(true);
+  streakCounter = signal<number>(0);
   yesterdaysCharacter = signal<DuneCharacter>(<DuneCharacter>{});
 
-  constructor(private readonly matDialog: MatDialog, readonly duneCharacterService: DuneCharacterService) {
+  constructor(
+    private readonly matDialog: MatDialog,
+    private readonly streakService: StreakService,
+    readonly duneCharacterService: DuneCharacterService) {
+
+    this.streakCounter.set(this.streakService.getStreakCounter())
     this.yesterdaysCharacter.set(duneCharacterService.yesterdaysCharacter);
   }
 
@@ -51,7 +58,11 @@ export class DunedleComponent {
 
   onWin() {
     this.editable.set(false);
-    setTimeout(() => this.matDialog.open(WinDialogComponent), 2500);
+    this.streakService.increaseStreakCounter();
+    setTimeout(() => {
+      this.matDialog.open(WinDialogComponent);
+      this.streakCounter.set(this.streakService.getStreakCounter());
+    }, 2500);
   }
 
   onHelpClick() {
