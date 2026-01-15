@@ -1,0 +1,39 @@
+/**
+ * © 2026 moeridoe
+ * Licensed under CC BY-NC-SA 4.0
+ * https://creativecommons.org/licenses/by-nc-sa/4.0/
+ */
+
+h2 {
+  margin: 0 0 24px;
+  align-self: center;
+}
+
+.statistics-container {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 32px;
+  line-height: 1.5;
+}
+
+table {
+  width: 100%;
+}
+
+tr {
+
+  :first-child {
+    font-weight: bold;
+    text-align: right;
+  }
+
+  :last-child {
+    text-align: left;
+  }
+}
+
+td {
+  height: 35px;
+  padding: 0 24px;
+  min-width: 120px;
+}

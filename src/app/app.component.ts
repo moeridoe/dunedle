@@ -19,5 +19,5 @@ import {DunedleComponent} from './components/dunedle/dunedle.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  version = 'v1.1.2';
+  version = 'v1.1.3';
 }
